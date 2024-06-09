@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import Library from "./pages/library";
+import LiveEvents from "./pages/liveEvents ";
+import Monetize from "./pages/Monetize";
+import Showcases from "./pages/Showcases";
+import Analytics from "./pages/Analytics";
+import Sidebar from "./components/Sidebar";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Sidebar>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/liveEvents" element={<LiveEvents />} />
+            <Route path="/Showcases" element={<Showcases />} />
+            <Route path="/Monetize" element={<Monetize />} />
+            <Route path="/Analytics" element={<Analytics />} />
+          </Routes>
+        </Sidebar>
+      </BrowserRouter>
+    </>
   );
 }
 

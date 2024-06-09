@@ -1,0 +1,61 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "title": "Bindra Bana Jo",
+      "singer": "Ishant Bhardwaj",
+      "path": "/videos/video3.mp4",
+      "poster": "https://i.ytimg.com/vi/V0tLmW9T1pc/maxresdefault.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Bamniye",
+      "singer": "Suresh Sharma",
+      "path": "/videos/video2.mp4",
+      "poster": "https://i.ytimg.com/vi/y73vyGmM7bY/maxresdefault.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Dabda Kithe Aa",
+      "singer": "R Nait",
+      "path": "/videos/video1.mp4",
+      "poster": "https://i.ytimg.com/vi/8M72otccJak/maxresdefault.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Cheques",
+      "singer": "Shubh",
+      "path": "/videos/video4.mp4",
+      "poster": "https://i.ytimg.com/vi/4tywp83zkmk/maxresdefault.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Manat",
+      "singer": "Darshan Raval",
+      "path": "/videos/video5.mp4",
+      "poster": "https://i.ytimg.com/vi/lRytupA_9k0/maxresdefault.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Try Me",
+      "singer": "Karan Aujla",
+      "path": "/videos/video6.mp4",
+      "poster": "https://i.ytimg.com/vi/k-8LSQRRyq4/maxresdefault.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Ve Haniye",
+      "singer": "Ravi Dubhey",
+      "path": "/videos/video7.mp4",
+      "poster": "https://i.ytimg.com/vi/dXqse3ixTzk/maxresdefault.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Manat",
+      "singer": "Darshan Raval",
+      "path": "/videos/video5.mp4",
+      "poster": "https://i.ytimg.com/vi/lRytupA_9k0/maxresdefault.jpg"
+    }
+    
+  ]
+}
