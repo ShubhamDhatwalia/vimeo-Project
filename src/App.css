@@ -1,12 +1,17 @@
 *{
     margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
 }
 .side-bar {
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(182, 181, 181);
     overflow: hidden;
     overflow-y: auto;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     
     transition: width 0.1s; /* Smooth transition */
@@ -85,6 +90,11 @@ nav{
 }
 nav button{
     border-radius: 6px !important;
+    background-color: rgb(55, 195, 250) !important;
+}
+
+nav button:hover{
+    background-color: rgb(12, 163, 223) !important;
 }
 .navbtn2:focus, .navbtn1:focus {
     outline: none;
@@ -98,8 +108,99 @@ nav button{
 }
 .navIcon:hover{
     
-    background-color: rgb(243, 240, 240);
+    background-color: rgb(231, 227, 227);
     
+}
+
+.btns-group{
+    border: 1px solid rgb(209, 208, 208);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 5px rgb(209, 208, 208) ;
+    width: 170px;
+    height: 70px;
+    
+}
+.btns-group:hover{
+    box-shadow: 0px 0px 10px rgb(194, 193, 193);
+    background-color: rgb(243, 243, 243);
+}
+
+.btnIcon{
+    padding: 5px;
+    border-radius: 8px;
+    
+}
+#btn1{
+    background-color: rgb(186, 221, 235);
+}
+#btn2{
+    background-color: antiquewhite;
+}
+#btn3{
+    background-color: rgb(255, 216, 216);
+}
+#btn4{
+    background-color: rgb(177, 211, 224);
+}
+#btn5{
+    background-color: rgb(201, 245, 201);
+}
+.btn-name{
+    font-size: 14px;
+}
+.col-11{
+    border: 1px solid rgb(122, 122, 122);
+    border-style: dashed;
+    border-radius: 10px;
+    flex-direction: column;
+    color: gray;
+    padding-top: 90px;
+    padding-bottom: 90px;
+   
+}
+.btn-selectFiles{
+    background-color: rgb(34, 173, 228) !important;
+    border-radius: 8px !important;
+    color: white;
+    margin-top: 30px;
+    padding: 8px;
+    border: none;
+}
+.btn-selectFiles:hover{
+    background-color: rgb(12, 163, 223) !important;
+}
+
+.card{
+    width: 225px;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 5px;
+    /* border: 2px solid gray; */
+}
+.card img{
+    border-radius: 5px;
+}
+.card:hover{
+    box-shadow: 0px 0px 12px gray;
+}
+.card-title{
+    font-size: 15px;
+    color: black;
+}
+.card h5{
+    font-size: 13px;
+    color: rgb(136, 134, 134);
+    margin-top: 8px;
+    font-weight: 400;
+}
+.card p{
+    font-size: 12px;
+    color: rgb(105, 104, 104);
+    margin-top: 3px;
 }
 
 /* Searchbar.css */
@@ -110,6 +211,14 @@ nav button{
       display: none;
     }
   }
+
+  @media (max-width: 500px) {
+    .col-11{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+  }
+  
   
   @media (max-width: 370px) {
     .searchbar-component {
@@ -121,4 +230,45 @@ nav button{
     .navbtn1{
         display: none;
     }
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625 = 56.25%) */
+    margin-bottom: 1rem; /* Space between video and card body */
+  }
+  
+  .video-container .video-thumbnail,
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease;
+  }
+  
+  .video-container iframe {
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .card:hover .video-container iframe {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .video-container .video-thumbnail {
+    z-index: 2;
+  }
+  
+  .card:hover .video-container .video-thumbnail {
+    opacity: 0;
+  }
+  
+  .card-body {
+    padding: 1rem;
+    flex-grow: 1; /* Ensure the card body takes remaining space */
   }

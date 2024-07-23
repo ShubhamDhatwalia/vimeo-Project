@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GoHome } from "react-icons/go";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   MdOutlineVideoLibrary,
   MdOutlinePhotoSizeSelectSmall,
@@ -13,6 +13,9 @@ import { FaPlus } from "react-icons/fa6";
 
 function Sidebar({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef(null);
+  const mainRef = useRef(null);
+  const location = useLocation();
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -34,6 +37,27 @@ function Sidebar({ children }) {
     },
   };
 
+  const handleClickOutside = (event) => {
+    if (
+      sidebarRef.current &&
+      !sidebarRef.current.contains(event.target) &&
+      mainRef.current.contains(event.target)
+    ) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
   return (
     <div className="main-container">
       <motion.div
@@ -41,11 +65,11 @@ function Sidebar({ children }) {
           width: isOpen ? "220px" : "50px",
           transition: {
             duration: 0.4,
-            
             damping: 12,
           },
         }}
         className="side-bar"
+        ref={sidebarRef}
       >
         <div className="top-section d-flex align-items-center justify-content-between mb-2">
           <AnimatePresence>
@@ -67,7 +91,7 @@ function Sidebar({ children }) {
           </div>
         </div>
 
-        <NavLink to="/" activeClassName="active" className="link  link1">
+        <NavLink to="/" activeClassName="active" className="link link1">
           <div className="icon">
             <GoHome />
           </div>
@@ -203,6 +227,8 @@ function Sidebar({ children }) {
           marginLeft: isOpen ? "220px" : "50px",
           transition: "margin-left 0.6s",
         }}
+        ref={mainRef}
+        onClick={handleClickOutside}
       >
         {children}
       </main>

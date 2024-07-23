@@ -5,17 +5,24 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import Searchbar from "./Searchbar";
 import NewbtnPop from "./NewbtnPop";
+import Profilepop from "./Profilepop";
 
 function NavBar() {
   const [btnPop, setBtnPop] = useState(false);
+  const [profilePop, setProfilePop] = useState(false);
   const newbtnRef = useRef(null);
   const buttonRef = useRef(null);
+  const profileRef = useRef(null);
 
-  const handleNewbtnPop = (event) => {
-    setBtnPop((prev) => !prev); // Toggle the dropdown visibility
+  const handleProfilePop = () => {
+    setProfilePop(!profilePop);
   };
 
-  const handleClickOutside = (event) => {
+  const handleNewbtnPop = (event) => {
+    setBtnPop(!btnPop);
+  };
+
+  const handleClickOutsideNewbtnPop = (event) => {
     if (
       newbtnRef.current &&
       !newbtnRef.current.contains(event.target) &&
@@ -26,10 +33,21 @@ function NavBar() {
     }
   };
 
+  const handleClickOutsideprofileRef = (event) => {
+    if (
+      profileRef.current &&
+      !profileRef.current.contains(event.target)
+    ) {
+      setProfilePop(false);
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutsideNewbtnPop);
+    document.addEventListener("mousedown", handleClickOutsideprofileRef);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutsideNewbtnPop);
+      document.removeEventListener("mousedown", handleClickOutsideprofileRef);
     };
   }, []);
 
@@ -48,7 +66,7 @@ function NavBar() {
           <div className="d-flex align-items-center gap-4 ms-auto">
             <button
               type="button"
-              className="navbtn1 btn btn-primary upgrade p-0 px-1 pb-1"
+              className="navbtn1 btn  upgrade p-0 px-1 pb-1"
             >
               Upgrade
             </button>
@@ -60,7 +78,7 @@ function NavBar() {
             <div className="d-flex align-items-center flex-nowrap">
               <button
                 ref={buttonRef}
-                className="btn btn-primary p-1 navbtn2"
+                className="btn  p-1 navbtn2"
                 onClick={handleNewbtnPop}
                 style={{ whiteSpace: "nowrap", fontWeight: "700" }}
               >
@@ -68,13 +86,17 @@ function NavBar() {
               </button>
             </div>
 
-            <CgProfile size={40} className="navIcon" />
+            <div onClick={handleProfilePop} ref={profileRef}>
+              <CgProfile size={40} className="navIcon" />
+            </div>
           </div>
         </div>
       </nav>
       <div ref={newbtnRef}>
         <NewbtnPop isOpen={btnPop} closeNewbtnPop={closeNewbtnPop} />
       </div>
+
+      <Profilepop isOpen={profilePop} />
     </>
   );
 }
